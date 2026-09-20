@@ -8,6 +8,7 @@
   "start": "vite",
   "build": "vite build",
   "preview": "vite preview",
+  "deploy": "vite build && gh-pages -d dist",
   "test": "npx mocha --spec tests/**/*.test.ts",
   "lint": "eslint src/**/*.ts",
   "prepare": "husky install"

@@ -28,14 +28,12 @@ function renderUI(): void {
   title.textContent = 'Система Управління Бібліотекою';
   container.appendChild(title);
 
-  // Форма Додати Книгу
   const bookCard = createCard('Додати Книгу', [
     { id: 'bookTitle', placeholder: 'Назва книги' },
     { id: 'bookAuthor', placeholder: 'Автор' },
     { id: 'bookYear', placeholder: 'Рік видання' }
   ], 'Додати Книгу', onAddBook);
 
-  // Форма Додати Користувача
   const userCard = createCard('Додати Користувача', [
     { id: 'userName', placeholder: 'Ім\'я' },
     { id: 'userEmail', placeholder: 'Email' }
@@ -44,7 +42,6 @@ function renderUI(): void {
   container.appendChild(bookCard);
   container.appendChild(userCard);
 
-  // Списки
   container.appendChild(renderBookList());
   container.appendChild(renderUserList());
 
@@ -158,7 +155,6 @@ function renderBookList(): HTMLElement {
             return;
           }
 
-          // Перевірка ліміту 3 книг
           const userBorrowedCount = bookLibrary.getAll().filter(b => b.borrowedByUserId === userId).length;
           if (userBorrowedCount >= 3) {
             Modal.showAlert('Обмеження', 'Цей користувач вже позичив 3 книги!');
@@ -204,5 +200,4 @@ function renderUserList(): HTMLElement {
   return card;
 }
 
-// Початковий рендер
 renderUI();
